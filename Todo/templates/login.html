@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; } 
+        .container { width: 100%; max-width: 600px; background-color: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px; } 
+        .form-container { display: flex; justify-content: space-between; flex-wrap: wrap; } 
+        form { width: 100%; max-width: 250px; margin: 10px; } 
+        h2 { text-align: center; color: #333; }
+         .form-group { margin-bottom: 15px; } 
+         label { display: block; font-weight: bold; margin-bottom: 5px; } 
+         input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; } 
+         button { width: 100%; padding: 10px; border: none; border-radius: 4px; background-color: #007bff; color: #fff; font-size: 16px; cursor: pointer; transition: background-color 0.3s; } 
+         button:hover { background-color: #0056b3}
+    </style>
+</head>
+<body>
+    <div class="container">
+         <div class="form-container"> 
+            <!-- Login Form -->
+             <form id="login-form" action="/login/" method="post"> 
+                <h2>Login</h2>
+                 <div class="form-group"> 
+                    <label for="login-username">Username</label>
+                     <input type="text" id="login-username" name="username" required> 
+                    </div>
+                     <div class="form-group"> 
+                        <label for="login-password">Password</label> 
+                        <input type="password" id="login-password" name="password" required>
+                     </div>
+                      <button type="submit">Login</button> 
+                    </form><br>
+                    <a href="/signup"><p>Not a member yet?</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script>
+        function handleSubmit(){
+        username = document.getElementById('login-username').value
+        password = document.getElementById('login-password').value
+        axios.post('/',{username: username, password:password})
+        .then(function (response){
+            console.log("Success", response)
+        })
+        .catch(function (error){
+            console.log("Error", error)
+        })
+        }
+    </script>        
+</body>
+</html>
