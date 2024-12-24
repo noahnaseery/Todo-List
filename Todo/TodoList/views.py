@@ -12,18 +12,19 @@ def Login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = User.objects.filter(username = username)
+        print(username, password)
         if user:
             auth = authenticate(username=username, password=password)
             if auth is None:
                 messages.error(request, "Invalid Password")
-                return redirect('')
+                return redirect('/')
             else:
                 login(request, auth)
                 return redirect('dashboard.html')
 
         else:
             messages.error(request, "Invalid username")
-            return redirect('')
+            return redirect('/')
 
     return render(request,"login.html")
 

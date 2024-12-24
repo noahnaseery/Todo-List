@@ -19,10 +19,14 @@
 </head>
 <body>
     <div class="container">
+        {%if message%}
+        
+        {%endif%}
          <div class="form-container"> 
-            <!-- Login Form -->
-             <form id="login-form" action="/login/" method="post"> 
+            
+             <form id="login-form" action="" method="post"> 
                 <h2>Login</h2>
+                {% csrf_token %}
                  <div class="form-group"> 
                     <label for="login-username">Username</label>
                      <input type="text" id="login-username" name="username" required> 
@@ -38,19 +42,6 @@
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
-    <script>
-        function handleSubmit(){
-        username = document.getElementById('login-username').value
-        password = document.getElementById('login-password').value
-        axios.post('/',{username: username, password:password})
-        .then(function (response){
-            console.log("Success", response)
-        })
-        .catch(function (error){
-            console.log("Error", error)
-        })
-        }
-    </script>        
+          
 </body>
 </html>
