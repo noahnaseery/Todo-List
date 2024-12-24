@@ -16,15 +16,15 @@ def Login(request):
         if user:
             auth = authenticate(username=username, password=password)
             if auth is None:
-                messages.error(request, "Invalid Password")
-                return redirect('/')
+                message = "Invalid Password"
+                return render(request,'login.html', {'message': message})
             else:
                 login(request, auth)
                 return redirect('dashboard.html')
 
         else:
-            messages.error(request, "Invalid username")
-            return redirect('/')
+            message = "Invalid Username"
+            return render(request,'login.html', {'message': message})
 
     return render(request,"login.html")
 
